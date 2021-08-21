@@ -1,9 +1,9 @@
 <h3>Test</h3>
-<div class="stock-container">
+<div class="stock-container" *ngFor="let stock of stocks; index as i; trackBy: trackStockByCode">
     <div class="name">
-    {{Stock.name + ' (' + Stock.code + ')'}}    
+    {{stock.name + ' (' + stock.code + ')'}}    
     </div>
     <div class="price" 
-    [class]="Stock.isPositiveChange() ? 'positive' : 'negative'">$ {{Stock.price}}</div>
-    <button (click)="toggleFavorite($event)" [disabled]="Stock.favorite"> Tilføj til favorite</button>
+    [class]="stock.isPositiveChange() ? 'positive' : 'negative'">$ {{stock.price}}</div>
+    <button (click)="toggleFavorite($event, i)" [disabled]="stock.favorite"> Tilføj til favorite</button>
 </div>
